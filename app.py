@@ -137,7 +137,7 @@ def to_excel(df):
 st.title("🧪 Vlerësim i strategjive të depistimit të kancerit me anë të simulimit Monte-Carlo")
 
 st.markdown("""Mënyra e përdorimit:\n
-        1. Vendos numrin e pacientëve dhe numrin e simulimeve\n
+        1. Vendos numrin e të depistuarve dhe numrin e simulimeve\n
         2. Vendos një emër për skenarin.\n
         3. Përcakto parametrat e tij (grupmoshën, prevalencën e sëmundjes, \n 
            sensitivitetin dhe specificitetin e testit)\n
@@ -148,7 +148,7 @@ st.markdown("""Mënyra e përdorimit:\n
 """)
 
 st.sidebar.header("Parametrat")
-n_patients = st.sidebar.number_input("Nr. i pacientëve", 1000, 200000, 10000)
+n_patients = st.sidebar.number_input("Nr. i të depistuarve", 1000, 200000, 10000)
 n_simulations = st.sidebar.number_input("Nr. i simulimeve", 100, 20000, 10000)
 
 if "scenarios" not in st.session_state:
