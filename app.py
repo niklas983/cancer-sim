@@ -139,7 +139,8 @@ st.title("🧪 Vlerësim i strategjive të depistimit të kancerit me anë të s
 st.markdown("""Mënyra e përdorimit:\n
         1. Vendos numrin e pacientëve dhe numrin e simulimeve\n
         2. Vendos një emër për skenarin.\n
-        3. Përcakto parametrat e tij (grupmoshën, prevalencën e sëmundjes, \n sensitivitetin dhe specificitetin e testit)\n
+        3. Përcakto parametrat e tij (grupmoshën, prevalencën e sëmundjes, \n 
+           sensitivitetin dhe specificitetin e testit)\n
         4. Përcakto kostot e testit.\n
         5. Shtyp butonin "Shto skenar" \n
         6. Përsërit hapat nga 1 në 5 për të shtuar skenarë të tjerë.\n
