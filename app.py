@@ -289,12 +289,11 @@ if st.session_state.results_df is not None:
     ### Hapësira ROC
     Grafiku ROC krahason sensitivitetin dhe specificitetin.
 
-    Çdo pikë tregon një konfigurim testi.
-
-    • Më e lartë = ndjeshmëri më e mirë (zbulon më shumë raste të vërteta) \n
+    Çdo pikë tregon një konfigurim testi:
+    • Më lart = ndjeshmëri më e mirë (zbulon më shumë raste të vërteta) \n
     • Më majtas = më pak pozitive të rreme
 
-    Pra, testet me performancën më të mirë ndodhen pranë këndit të sipërm të majtë.
+    Pra, testet me performancën më të mirë ndodhen majtas-lart.
     """)
     
 
