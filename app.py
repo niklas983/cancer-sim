@@ -134,31 +134,39 @@ def to_excel(df):
 # -----------------------------
 # UI
 # -----------------------------
-st.title("🧪 Cancer Screening Simulator (Full Version)")
+st.title("🧪 Vlerësim i strategjive të depistimit të kancerit me anë të simulimit Monte-Carlo")
 
-st.sidebar.header("Global Parameters")
-n_patients = st.sidebar.number_input("Patients", 1000, 200000, 10000)
-n_simulations = st.sidebar.number_input("Simulations", 100, 20000, 10000)
+st.markdown("""Mënyra e përdorimit:
+        1. Vendos një emër për skenarit.
+        2. Përcakto parametrat e tij (prevalencën e sëmundjes, sensitivitetin dhe specificitetin e testit)
+        3. Shtyp butonin "Shto skenar".
+        4. Përsërit hapat nga 1 në 3 për të shtuar skenarë të tjerë.
+        5. Shtyp butonin "Fillo simulimin" në të djathtë.
+""")
+
+st.sidebar.header("Parametrat")
+n_patients = st.sidebar.number_input("Nr. i pacientëve", 1000, 200000, 10000)
+n_simulations = st.sidebar.number_input("Nr. i simulimeve", 100, 20000, 10000)
 
 if "scenarios" not in st.session_state:
     st.session_state.scenarios = []
 
-st.sidebar.header("Scenario Input")
+st.sidebar.header("Të dhënat e skenarit")
 
-name = st.sidebar.text_input("Scenario name")
+name = st.sidebar.text_input("Emri i skenarit")
 
-age_group = st.sidebar.selectbox("Age group", list(AGE_PRESETS.keys()))
+age_group = st.sidebar.selectbox("Grupmosha", list(AGE_PRESETS.keys()))
 prevalence = AGE_PRESETS[age_group] if AGE_PRESETS[age_group] else st.sidebar.slider("Prevalence", 0.001, 0.2, 0.01)
 
-sensitivity = st.sidebar.slider("Sensitivity", 0.5, 1.0, 0.85)
-specificity = st.sidebar.slider("Specificity", 0.5, 1.0, 0.90)
+sensitivity = st.sidebar.slider("Sensitiviteti", 0.5, 1.0, 0.85)
+specificity = st.sidebar.slider("Specificiteti", 0.5, 1.0, 0.90)
 
-st.sidebar.subheader("Costs")
-cost_test = st.sidebar.number_input("Cost/test", 1.0, 500.0, 20.0)
-cost_fp = st.sidebar.number_input("Cost/FP", 0.0, 5000.0, 200.0)
-cost_fn = st.sidebar.number_input("Cost/FN", 0.0, 20000.0, 5000.0)
+st.sidebar.subheader("Kostot")
+cost_test = st.sidebar.number_input("Kosto/test", 1.0, 500.0, 20.0)
+cost_fp = st.sidebar.number_input("Kosto/FP", 0.0, 5000.0, 200.0)
+cost_fn = st.sidebar.number_input("Kosto/FN", 0.0, 20000.0, 5000.0)
 
-if st.sidebar.button("Add Scenario"):
+if st.sidebar.button("Shto skenar"):
     st.session_state.scenarios.append({
         "name": name,
         "prevalence": prevalence,
@@ -175,7 +183,7 @@ if st.sidebar.button("Add Scenario"):
 if "results_df" not in st.session_state:
     st.session_state.results_df = None
 
-if st.button("Run Simulation"):
+if st.button("Fillo simulimin"):
 
     results = []
 
@@ -219,7 +227,7 @@ if st.session_state.results_df is not None:
 
     df = st.session_state.results_df
 
-    st.subheader("📊 Results")
+    st.subheader("📊 Rezultatet")
     st.dataframe(df)
 
     # Download
@@ -238,7 +246,7 @@ if st.session_state.results_df is not None:
     st.pyplot(fig)
 
     # CI plot
-    st.subheader("📉 Confidence Intervals (TP)")
+    st.subheader("📉 Intervalet e konfidencës (TP)")
     fig_ci, ax_ci = plt.subplots()
     y = df["TP"]
     yerr = [df["TP"] - df["TP_low"], df["TP_high"] - df["TP"]]
