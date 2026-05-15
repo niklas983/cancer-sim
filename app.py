@@ -9,9 +9,9 @@ from io import BytesIO
 # -----------------------------
 AGE_PRESETS = {
     "Custom": None,
-    "40-49 (low risk)": 0.005,
-    "50-69 (moderate risk)": 0.02,
-    "70+ (high risk)": 0.05
+    "40-49 (risk i ulët)": 0.005,
+    "50-69 (risk i moderuar)": 0.02,
+    "70+ (risk i lartë)": 0.05
 }
 
 # -----------------------------
@@ -136,12 +136,14 @@ def to_excel(df):
 # -----------------------------
 st.title("🧪 Vlerësim i strategjive të depistimit të kancerit me anë të simulimit Monte-Carlo")
 
-st.markdown("""Mënyra e përdorimit:
-        1. Vendos një emër për skenarit.
-        2. Përcakto parametrat e tij (prevalencën e sëmundjes, sensitivitetin dhe specificitetin e testit)
-        3. Shtyp butonin "Shto skenar".
-        4. Përsërit hapat nga 1 në 3 për të shtuar skenarë të tjerë.
-        5. Shtyp butonin "Fillo simulimin" në të djathtë.
+st.markdown("""Mënyra e përdorimit:\n
+        1. Vendos numrin e pacientëve dhe numrin e simulimeve\n
+        2. Vendos një emër për skenarit.\n
+        3. Përcakto parametrat e tij (grupmoshën, prevalencën e sëmundjes, sensitivitetin dhe specificitetin e testit)\n
+        4. Shtyp butonin "Shto skenar".\n
+        5. Përcakto kostot e testit. \n
+        6. Përsërit hapat nga 1 në 5 për të shtuar skenarë të tjerë.\n
+        7. Shtyp butonin "Fillo simulimin" në të djathtë dhe shiko rezultatet.
 """)
 
 st.sidebar.header("Parametrat")
