@@ -247,6 +247,15 @@ if st.session_state.results_df is not None:
     ax.bar(df["Scenario"], df[metric])
     ax.set_title(metric)
     st.pyplot(fig)
+    
+    st.markdown("""
+    ### Kurba e PPV
+    Ky grafik tregon se si ndryshon Vlera Parashikuese Pozitive sipas
+    prevalencës së sëmundjes dhe karakteristikave të testit.
+
+    Një PPV më e lartë do të thotë më pak fals pozitivë.
+    """)
+    
 
     # CI plot
     st.subheader("📉 Intervalet e konfidencës (TP)")
@@ -257,6 +266,15 @@ if st.session_state.results_df is not None:
     ax_ci.errorbar(df["Scenario"], y, yerr=yerr, fmt='none', capsize=5)
     st.pyplot(fig_ci)
 
+    st.markdown("""
+    ### Intervalet e Besimit
+    Intervalet e besimit përfaqësojnë pasigurinë rreth vlerave numerike.
+
+    Intervalet e ngushta sugjerojnë vlerësime më të sakta,
+    ndërsa intervalet më të gjera tregojnë ndryshueshmëri më të madhe.
+    """)
+    
+
     # ROC plot
     st.subheader("📈 ROC Space")
     fig2, ax2 = plt.subplots()
@@ -266,6 +284,19 @@ if st.session_state.results_df is not None:
     ax2.set_xlabel("False Positive Rate")
     ax2.set_ylabel("Sensitivity")
     st.pyplot(fig2)
+
+    st.markdown("""
+    ### Hapësira ROC
+    Grafiku ROC krahason sensitivitetin dhe specificitetin.
+
+    Çdo pikë tregon një konfigurim testi.
+
+    • Më e lartë = ndjeshmëri më e mirë (zbulon më shumë raste të vërteta)
+    • Më majtas = më pak pozitive të rreme
+
+    Pra, testet me performancën më të mirë ndodhen pranë këndit të sipërm të majtë.
+    """)
+    
 
     # Tornado
     st.subheader("🌪️ Tornado Analysis")
@@ -278,3 +309,11 @@ if st.session_state.results_df is not None:
     ax_tor.barh(tornado_df["Parameter"], tornado_df["High Impact"])
     ax_tor.set_title("Impact on True Positives")
     st.pyplot(fig_tor)
+
+    st.markdown("""
+    ### Analiza e Sensitivitetit ndaj Tornados
+    Kjo analizë tregon se cilët parametra kanë ndikimin më të madh
+    në rezultatet e simulimit.
+
+    Shiritat më të gjatë tregojnë ndikim më të fortë në rezultate.
+    """)
