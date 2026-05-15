@@ -144,7 +144,7 @@ st.markdown("""Mënyra e përdorimit:\n
         4. Përcakto kostot e testit.\n
         5. Shtyp butonin "Shto skenar" \n
         6. Përsërit hapat nga 1 në 5 për të shtuar skenarë të tjerë.\n
-        7. Shtyp butonin "Fillo simulimin" në të djathtë dhe shiko rezultatet.
+        7. Shtyp butonin "Fillo simulimin" dhe shiko rezultatet.
 """)
 
 st.sidebar.header("Parametrat")
@@ -258,7 +258,7 @@ if st.session_state.results_df is not None:
     
 
     # CI plot
-    st.subheader("📉 Intervalet e konfidencës (TP)")
+    st.subheader("📉 Intervalet e besimit (TP)")
     fig_ci, ax_ci = plt.subplots()
     y = df["TP"]
     yerr = [df["TP"] - df["TP_low"], df["TP_high"] - df["TP"]]
@@ -291,7 +291,7 @@ if st.session_state.results_df is not None:
 
     Çdo pikë tregon një konfigurim testi.
 
-    • Më e lartë = ndjeshmëri më e mirë (zbulon më shumë raste të vërteta)
+    • Më e lartë = ndjeshmëri më e mirë (zbulon më shumë raste të vërteta) \n
     • Më majtas = më pak pozitive të rreme
 
     Pra, testet me performancën më të mirë ndodhen pranë këndit të sipërm të majtë.
